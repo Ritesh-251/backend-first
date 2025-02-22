@@ -2,10 +2,14 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "first backend application under guidance of hitesh sir",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/index.js"
   },
   "author": "ritesh hooda",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
 }
