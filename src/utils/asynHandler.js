@@ -1,4 +1,4 @@
-const asyncHandler = (func) => { async(req,res,next) =>{
+const asyncHandler = (func) => { return async(req,res,next) =>{
 
     try{
         await func(req,res,next);
@@ -15,3 +15,4 @@ const asyncHandler = (func) => { async(req,res,next) =>{
 
     
 }
+export {asyncHandler};

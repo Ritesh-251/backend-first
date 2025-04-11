@@ -26,15 +26,6 @@ const userSchema = new Schema({
         lowercase: true,
         trim: true,
     },
-    username:
-    {
-        type: String,
-        required: true,
-        unique: true,
-        lowercase: true,
-        trim: true,
-        index: true
-    },
      avatar:
     {
         type: String,
