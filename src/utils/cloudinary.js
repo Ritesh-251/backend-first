@@ -7,12 +7,14 @@ import fs from "fs";
         api_secret: process.env.ACCESS_SECRET_KEY
     });
     
-    const uploadOnCloudinary = async function (localfilePath){
+   export  const uploadOnCloudinary = async function (localfilePath){
         try{
         if(!localfilePath) return null;
         const response = await cloudinary.uploader.upload(localfilePath,{
             resource_type:"auto"
         })
+        fs.unlinkSync(localfilePath);
+
         console.log("file has been uploaded",response.url);
     }catch(error){
         fs.unlinkSync(localfilePath);
@@ -20,4 +22,7 @@ import fs from "fs";
 
 
     }
+
+
+    
 }
