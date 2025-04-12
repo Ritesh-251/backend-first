@@ -38,10 +38,10 @@ const userSchema = new Schema({
         type:String,
         required:[true,"password is required "]
     },
-    refrestToken:
+    refreshToken:
     {
         type:String,
-        required: true,
+        required: false,
     },
     watchHistory:{
         type: Schema.Types.ObjectId,
