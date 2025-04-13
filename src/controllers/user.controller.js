@@ -180,13 +180,13 @@ const loginUser = asyncHandler( async function(req,res){
    
 }
 
-const refreshAccessToken = asyncHandler(async() =>{
+const refreshAccessToken = asyncHandler(async(req,res) =>{
    const incomingRefreshToken = req.cookies.refreshToken || req.body.refreshToken
    if(!incomingRefreshToken){
       throw new ApiError(401,"Unautherised Request")
    }
    try {
-      const decodedToken2 = jwt.verify(incomingRefreshToken,process.env.REFRESH_TOKEN_EXPIRY)
+      const decodedToken2 = jwt.verify(incomingRefreshToken,process.env.REFRESH_TOKEN_SECRET)
    
       const user = await User.findById(decodedToken2?._id);
       if(incomingRefreshToken!=user?.refreshToken){
@@ -197,7 +197,7 @@ const refreshAccessToken = asyncHandler(async() =>{
          secure: true
       }
       const {accessToken,newRefreshToken} = await generateAccessAndRefreshTokens(user._id);
-      return res.status(200).cookie("accessToken",accessToken,options).cookie("refreshToken",refreshToken,options).json(
+      return res.status(200).cookie("accessToken",accessToken,options).cookie("refreshToken",newRefreshToken,options).json(
          new ApiResponse(200,{accessToken,refreshToken: newRefreshToken},"Access token refreshed successfully"))
    
    }
