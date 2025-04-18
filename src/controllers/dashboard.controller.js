@@ -2,8 +2,8 @@ import mongoose from "mongoose"
 import {Video} from "../models/video.model.js"
 import {Subscription} from "../models/subscription.model.js"
 import {Like} from "../models/like.model.js"
-import {Apierror} from "../utils/Apierror.js"
-import {Apiresponse} from "../utils/Apiresponse.js"
+import {Apierror} from "../utils/ApiError.js"
+import {Apiresponse} from "../utils/ApiResponse.js"
 import {asyncHandler} from "../utils/asyncHandler.js"
 
 const getChannelStats = asyncHandler(async (req, res) => {
