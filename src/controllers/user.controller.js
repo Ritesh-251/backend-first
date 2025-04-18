@@ -178,7 +178,7 @@ const loginUser = asyncHandler( async function(req,res){
    
 }
 
-const refreshAccessToken = asyncHandler(async(req,res) =>{
+const refreshAccessToken = asyncHandler(async(req,res) =>{//we are generating access token from refresh token;
    const incomingRefreshToken = req.cookies.refreshToken || req.body.refreshToken
    if(!incomingRefreshToken){
       throw new ApiError(401,"Unautherised Request")
@@ -221,7 +221,7 @@ const changeCurrentPassword = asyncHandler(async(req,res) =>{
 
 const getCurrentUser = asyncHandler(async(req,res) => {
    
-   return res.status(200).json(new ApiResponse(200,req.user,"Users password changed successfully"))
+   return res.status(200).json(new ApiResponse(200,req.user,"User fetched successfully"))
 })
 
 const updateAccountDetails = asyncHandler(async(req, res) => {
